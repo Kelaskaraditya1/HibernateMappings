@@ -3,6 +3,8 @@ package com.StarkIndustries.HibernateMappings.Configuration;
 import com.StarkIndustries.HibernateMappings.Keys.Keys;
 import com.StarkIndustries.HibernateMappings.Models.Certificate;
 import com.StarkIndustries.HibernateMappings.Models.Student;
+import com.StarkIndustries.HibernateMappings.OneToMany.Models.Answer;
+import com.StarkIndustries.HibernateMappings.OneToMany.Models.Question;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -35,6 +37,8 @@ public class Utility {
 
             configuration.addAnnotatedClass(Student.class);
             configuration.addAnnotatedClass(Certificate.class);
+            configuration.addAnnotatedClass(Question.class);
+            configuration.addAnnotatedClass(Answer.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             sessionFactory= configuration.buildSessionFactory(serviceRegistry);
