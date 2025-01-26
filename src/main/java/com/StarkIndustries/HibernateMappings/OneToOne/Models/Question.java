@@ -1,7 +1,6 @@
-package com.StarkIndustries.HibernateMappings.OneToMany.Models;
+package com.StarkIndustries.HibernateMappings.OneToOne.Models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Questions")
@@ -14,10 +13,10 @@ public class Question {
     @Column(name = "question")
     private String question;
 
-    @OneToMany(mappedBy = "question")
-    private List<Answer> answer;
+    @OneToOne
+    private Answer answer;
 
-    public Question(int questionId, String question, List<Answer> answer) {
+    public Question(int questionId, String question, Answer answer) {
         this.questionId = questionId;
         this.question = question;
         this.answer = answer;
@@ -47,11 +46,11 @@ public class Question {
         this.question = question;
     }
 
-    public List<Answer> getAnswer() {
+    public Answer getAnswer() {
         return answer;
     }
 
-    public void setAnswer(List<Answer> answer) {
+    public void setAnswer(Answer answer) {
         this.answer = answer;
     }
 

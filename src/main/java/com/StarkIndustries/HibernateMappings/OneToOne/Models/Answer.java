@@ -1,4 +1,4 @@
-package com.StarkIndustries.HibernateMappings.OneToMany.Models;
+package com.StarkIndustries.HibernateMappings.OneToOne.Models;
 
 import javax.persistence.*;
 
@@ -13,10 +13,10 @@ public class Answer {
     @Column(name = "answer")
     private String answer;
 
-    @ManyToOne
+    @OneToOne(mappedBy = "answer")
     private Question question;
 
-    public Answer(int answerId, String answer, Question question){
+    public Answer(int answerId,String answer,Question question){
         this.answerId=answerId;
         this.answer=answer;
         this.question=question;

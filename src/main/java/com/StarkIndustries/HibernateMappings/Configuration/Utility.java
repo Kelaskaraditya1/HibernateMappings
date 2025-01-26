@@ -1,6 +1,8 @@
 package com.StarkIndustries.HibernateMappings.Configuration;
 
 import com.StarkIndustries.HibernateMappings.Keys.Keys;
+import com.StarkIndustries.HibernateMappings.ManytoMany.Models.Employee;
+import com.StarkIndustries.HibernateMappings.ManytoMany.Models.Project;
 import com.StarkIndustries.HibernateMappings.Models.Certificate;
 import com.StarkIndustries.HibernateMappings.Models.Student;
 import com.StarkIndustries.HibernateMappings.OneToMany.Models.Answer;
@@ -39,6 +41,8 @@ public class Utility {
             configuration.addAnnotatedClass(Certificate.class);
             configuration.addAnnotatedClass(Question.class);
             configuration.addAnnotatedClass(Answer.class);
+            configuration.addAnnotatedClass(Employee.class);
+            configuration.addAnnotatedClass(Project.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             sessionFactory= configuration.buildSessionFactory(serviceRegistry);

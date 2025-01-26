@@ -7,20 +7,25 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
         SessionFactory sessionFactory = Utility.getSessionFactory();
-
-        Answer answer1 = new Answer(202,"Android is an Operating System");
-        Question question1 = new Question(102,"What is Android?",answer1);
-        answer1.setQuestion(question1);
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
+        Question question1 = new Question(101,"What is Java");
+        Answer answer1 =new Answer(201,"Java is Object Oriented Language",question1);
+        Answer answer2 = new Answer(202,"Java is an Enterprise Language",question1);
+        List<Answer> answerList = new ArrayList<>(List.of(answer1,answer2));
+        question1.setAnswer(answerList);
+
         session.save(question1);
         session.save(answer1);
+        session.save(answer2);
 
         transaction.commit();
         session.close();
